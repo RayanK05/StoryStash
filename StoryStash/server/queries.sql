@@ -4,7 +4,6 @@ CREATE TABLE users (
 	password VARCHAR(100) NOT NULL
 );
 
-
 --Create Media Table--
 CREATE TABLE media (
     media_id SERIAL PRIMARY KEY,
@@ -17,5 +16,5 @@ CREATE TABLE media (
 CREATE TABLE notes (
     title VARCHAR(100),
     note TEXT,
-    user_email VARCHAR(100) REFERENCES media(user_email)
+    media_id INTEGER REFERENCES media(media_id)
 );
