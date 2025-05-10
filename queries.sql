@@ -17,5 +17,5 @@ CREATE TABLE media (
 CREATE TABLE notes (
     title VARCHAR(100),
     note TEXT,
-    user_email VARCHAR(100) REFERENCES media(user_email)
+    media_id INTEGER REFERENCES media(media_id)
 );
