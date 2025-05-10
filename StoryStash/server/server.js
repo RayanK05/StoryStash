@@ -1,19 +1,11 @@
-import express from "express";
-import bodyParser from "body-parser";
-import pg from "pg";
+import express from 'express';
 
 const app = express();
-const port = 3000;
 
-const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "permalist",
-  password: "Moh@med17",
-  port: 5432,
-});
-db.connect();
+app.get ("/api", (req, res) => {
+  res.json({"users": ["userOne", "userTwo", "userThree"]});
+})
 
-app.get("/", (req,res) => {
-    res.render("index");
+app.listen(3100, () => {
+  console.log("Listening on port 3100.");
 })
