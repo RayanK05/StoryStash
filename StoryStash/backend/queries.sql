@@ -4,7 +4,6 @@ CREATE TABLE users (
 	password VARCHAR(100) NOT NULL
 );
 
-
 --Create Media Table--
 CREATE TABLE media (
     media_id SERIAL PRIMARY KEY,
