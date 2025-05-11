@@ -1,27 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-
+import logo from "./logo.svg"
 
 function App() {
-  const [backendData, setBackendData] = useState([{}]);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/api").then( //gets app.get("/api")
-      response => response.json() //whatever is in the GET response is equal to response
-    ).then(
-      data=> { //data in the json is passed as the data variable
-        setBackendData(data)
-      }
-    )
-  }, []) //[] prevents running more than once
+    fetch("/api")
+    .then((res) => res.json())
+    .then((data) => setData(data.message));
+  }, [])
 
   return (
-    <div>
-      {(typeof backendData.users === 'undefined') ? 
-      (<p>Loading...</p>) : backendData.users.map((user, i) => (
-        <p key={i}>{user}</p>
-      ))
-    }
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>{!data ? "Loading..." : data}</p>
+      </header>
     </div>
   )
 }
