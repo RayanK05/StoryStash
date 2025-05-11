@@ -18,3 +18,15 @@ CREATE TABLE notes (
     note TEXT,
     media_id INTEGER REFERENCES media(media_id)
 );
+
+--Join Command--
+SELECT 
+    users.email,
+    media.media_id,
+    media.title AS media_title,
+    media.media_type,
+    notes.title AS note_title,
+    notes.note
+FROM users
+JOIN media ON users.email = media.user_email
+JOIN notes ON media.media_id = notes.media_id;
