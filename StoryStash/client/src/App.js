@@ -8,15 +8,20 @@ function App() {
   useEffect(() => {
     fetch("/api")
     .then((res) => res.json())
-    .then((data) => setData(data.message));
+    .then((response) => setData(response.postData));
   }, [])
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
+      <h2>User Notes</h2>
+      {data.map((item, index) => (
+        <div key={index} className="note-card">
+          <h3>{item.media}</h3>
+          <p><strong>Type:</strong> {item.type}</p>
+          <p><strong>Title:</strong> {item.title}</p>
+          <p><strong>Note:</strong> {item.note}</p>
+          </div>
+      ))}
     </div>
   )
 }
